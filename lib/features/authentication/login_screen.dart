@@ -2,14 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok_clone/constants/gaps.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
+import 'package:tiktok_clone/features/authentication/apple_screen.dart';
+import 'package:tiktok_clone/features/authentication/username_screen.dart';
 
 import '../widgets/auth_buttons.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
-  void onSignUpTap(BuildContext context) {
+  void _onSignUpTap(BuildContext context) {
     Navigator.of(context).pop();
+  }
+
+  void _onEmailTap(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) => const UsernameScreen(),
+    ));
+  }
+
+  void _onAppleTap(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) => const AppleScreen(),
+    ));
   }
 
   @override
@@ -19,8 +33,8 @@ class LoginScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: Sizes.size40),
           child: Column(
-            children: const [
-              Text(
+            children: [
+              const Text(
                 'Log in to TikTok',
                 style: TextStyle(
                   fontSize: Sizes.size24,
@@ -28,7 +42,7 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
               Gaps.v20,
-              Text(
+              const Text(
                 'Manage your account, check notifications, comment on videos, and more.',
                 style: TextStyle(
                   fontSize: Sizes.size16,
@@ -38,23 +52,27 @@ class LoginScreen extends StatelessWidget {
               ),
               Gaps.v40,
               AuthButton(
-                icon: FaIcon(FontAwesomeIcons.solidUser),
+                icon: const FaIcon(FontAwesomeIcons.solidUser),
                 text: 'Use Email & password',
+                tap: _onEmailTap,
               ),
               Gaps.v10,
               AuthButton(
-                icon: FaIcon(FontAwesomeIcons.facebook),
+                icon: const FaIcon(FontAwesomeIcons.facebook),
                 text: 'Continue with facebook',
+                tap: _onAppleTap,
               ),
               Gaps.v10,
               AuthButton(
-                icon: FaIcon(FontAwesomeIcons.apple),
+                icon: const FaIcon(FontAwesomeIcons.apple),
                 text: 'Continue with Apple',
+                tap: _onAppleTap,
               ),
               Gaps.v10,
               AuthButton(
-                icon: FaIcon(FontAwesomeIcons.google),
+                icon: const FaIcon(FontAwesomeIcons.google),
                 text: 'Continue with Google',
+                tap: _onAppleTap,
               ),
             ],
           ),
@@ -73,7 +91,7 @@ class LoginScreen extends StatelessWidget {
               const Text('Don\'t have an account?'),
               Gaps.h5,
               GestureDetector(
-                onTap: () => onSignUpTap(context),
+                onTap: () => _onSignUpTap(context),
                 child: Text(
                   'Sign up',
                   style: TextStyle(
