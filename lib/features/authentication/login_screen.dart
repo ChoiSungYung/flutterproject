@@ -35,8 +35,9 @@ class LoginScreen extends StatelessWidget {
           child: Column(
             children: [
               const Text(
-                'Log in to TikTok',
+                '틱톡에 로그인하기',
                 style: TextStyle(
+                  fontFamily: 'GmarketSans',
                   fontSize: Sizes.size24,
                   fontWeight: FontWeight.w700,
                 ),
