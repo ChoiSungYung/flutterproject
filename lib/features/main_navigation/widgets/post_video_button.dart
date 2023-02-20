@@ -43,7 +43,8 @@ class _PostVideoButtonState extends State<PostVideoButton> {
     return GestureDetector(
       onLongPressDown: (details) => _onTapDown(),
       onLongPressUp: _onTapUp,
-      onTap: _onPostVideoButtonTap,
+      onTapDown: (details) => _onTapDown(),
+      onTapUp: (details) => _onTapUp(),
       child: Stack(
         clipBehavior: Clip.none,
         children: [
@@ -56,7 +57,9 @@ class _PostVideoButtonState extends State<PostVideoButton> {
                 horizontal: Sizes.size8,
               ),
               decoration: BoxDecoration(
-                color: const Color(0xff61D4F0),
+                color: _onVideoButtonTapDown
+                    ? const Color(0xff61D4F0)
+                    : Theme.of(context).primaryColor,
                 borderRadius: BorderRadius.circular(
                   Sizes.size8,
                 ),
@@ -72,7 +75,9 @@ class _PostVideoButtonState extends State<PostVideoButton> {
                 horizontal: Sizes.size8,
               ),
               decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor,
+                color: _onVideoButtonTapDown
+                    ? Theme.of(context).primaryColor
+                    : const Color(0xff61D4F0),
                 borderRadius: BorderRadius.circular(
                   Sizes.size8,
                 ),
