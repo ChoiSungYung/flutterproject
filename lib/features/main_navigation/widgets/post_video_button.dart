@@ -41,8 +41,6 @@ class _PostVideoButtonState extends State<PostVideoButton> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onLongPressDown: (details) => _onTapDown(),
-      onLongPressUp: _onTapUp,
       onTapDown: (details) => _onTapDown(),
       onTapUp: (details) => _onTapUp(),
       child: Stack(
