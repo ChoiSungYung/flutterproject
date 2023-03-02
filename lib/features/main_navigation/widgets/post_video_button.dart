@@ -3,7 +3,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
 
 class PostVideoButton extends StatefulWidget {
-  const PostVideoButton({super.key});
+  final bool inverted;
+  const PostVideoButton({super.key, required this.inverted});
 
   @override
   State<PostVideoButton> createState() => _PostVideoButtonState();
@@ -11,7 +12,6 @@ class PostVideoButton extends StatefulWidget {
 
 class _PostVideoButtonState extends State<PostVideoButton> {
   bool _onVideoButtonTapDown = false;
-
   void _onTapDown() {
     setState(() {
       _onVideoButtonTapDown = true;
@@ -58,8 +58,8 @@ class _PostVideoButtonState extends State<PostVideoButton> {
               ),
               decoration: BoxDecoration(
                 color: _onVideoButtonTapDown
-                    ? const Color(0xff61D4F0)
-                    : Theme.of(context).primaryColor,
+                    ? Theme.of(context).primaryColor
+                    : const Color(0xff61D4F0),
                 borderRadius: BorderRadius.circular(
                   Sizes.size8,
                 ),
@@ -76,8 +76,8 @@ class _PostVideoButtonState extends State<PostVideoButton> {
               ),
               decoration: BoxDecoration(
                 color: _onVideoButtonTapDown
-                    ? Theme.of(context).primaryColor
-                    : const Color(0xff61D4F0),
+                    ? const Color(0xff61D4F0)
+                    : Theme.of(context).primaryColor,
                 borderRadius: BorderRadius.circular(
                   Sizes.size8,
                 ),
@@ -91,7 +91,7 @@ class _PostVideoButtonState extends State<PostVideoButton> {
               horizontal: Sizes.size12,
             ),
             decoration: BoxDecoration(
-              color: _onVideoButtonTapDown ? Colors.black : Colors.white,
+              color: !widget.inverted ? Colors.white : Colors.black,
               borderRadius: BorderRadius.circular(
                 Sizes.size6,
               ),
@@ -99,7 +99,7 @@ class _PostVideoButtonState extends State<PostVideoButton> {
             child: Center(
               child: FaIcon(
                 FontAwesomeIcons.plus,
-                color: _onVideoButtonTapDown ? Colors.white : Colors.black,
+                color: !widget.inverted ? Colors.black : Colors.white,
                 size: 18,
               ),
             ),
