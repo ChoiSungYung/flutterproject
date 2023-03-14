@@ -30,81 +30,114 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: Sizes.size40),
-          child: Column(
-            children: [
-              const Text(
-                'Sign up for TikTok',
-                style: TextStyle(
-                  fontSize: Sizes.size24,
-                  fontWeight: FontWeight.w700,
-                ),
+    return OrientationBuilder(
+      builder: (context, orientation) {
+        if (orientation == Orientation.landscape) {
+          return const Scaffold(
+            body: Center(
+              child: Text('Plz rotate your phone.'),
+            ),
+          );
+        }
+        return Scaffold(
+          body: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: Sizes.size40),
+              child: Column(
+                children: [
+                  const Text(
+                    'Sign up for TikTok',
+                    style: TextStyle(
+                      fontSize: Sizes.size24,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  Gaps.v20,
+                  const Text(
+                    'Create a profile, follow other accounts, make your own videos, and more.',
+                    style: TextStyle(
+                      fontSize: Sizes.size16,
+                      color: Colors.black38,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  Gaps.v40,
+                  if (orientation == Orientation.portrait) ...[
+                    AuthButton(
+                      icon: const FaIcon(FontAwesomeIcons.solidUser),
+                      text: 'Use Email & password',
+                      tap: _onEmailTap,
+                    ),
+                    Gaps.v10,
+                    AuthButton(
+                      icon: const FaIcon(FontAwesomeIcons.facebook),
+                      text: 'Continue with facebook',
+                      tap: _onAppleTap,
+                    ),
+                    Gaps.v10,
+                    AuthButton(
+                      icon: const FaIcon(FontAwesomeIcons.apple),
+                      text: 'Continue with Apple',
+                      tap: _onAppleTap,
+                    ),
+                    Gaps.v10,
+                    AuthButton(
+                      icon: const FaIcon(FontAwesomeIcons.google),
+                      text: 'Continue with Google',
+                      tap: _onAppleTap,
+                    ),
+                  ],
+                  if (orientation == Orientation.landscape)
+                    Row(
+                      children: [
+                        Expanded(
+                          child: AuthButton(
+                            icon: const FaIcon(FontAwesomeIcons.solidUser),
+                            text: 'Use Email & password',
+                            tap: _onEmailTap,
+                          ),
+                        ),
+                        Gaps.h16,
+                        Expanded(
+                          child: AuthButton(
+                            icon: const FaIcon(FontAwesomeIcons.facebook),
+                            text: 'Continue with facebook',
+                            tap: _onAppleTap,
+                          ),
+                        ),
+                      ],
+                    )
+                ],
               ),
-              Gaps.v20,
-              const Text(
-                'Create a profile, follow other accounts, make your own videos, and more.',
-                style: TextStyle(
-                  fontSize: Sizes.size16,
-                  color: Colors.black38,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              Gaps.v40,
-              AuthButton(
-                icon: const FaIcon(FontAwesomeIcons.solidUser),
-                text: 'Use Email & password',
-                tap: _onEmailTap,
-              ),
-              Gaps.v10,
-              AuthButton(
-                icon: const FaIcon(FontAwesomeIcons.facebook),
-                text: 'Continue with facebook',
-                tap: _onAppleTap,
-              ),
-              Gaps.v10,
-              AuthButton(
-                icon: const FaIcon(FontAwesomeIcons.apple),
-                text: 'Continue with Apple',
-                tap: _onAppleTap,
-              ),
-              Gaps.v10,
-              AuthButton(
-                icon: const FaIcon(FontAwesomeIcons.google),
-                text: 'Continue with Google',
-                tap: _onAppleTap,
-              ),
-            ],
+            ),
           ),
-        ),
-      ),
-      bottomNavigationBar: BottomAppBar(
-        elevation: 2,
-        color: Colors.grey.shade100,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: Sizes.size32,
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text('Already have an account?'),
-              Gaps.h5,
-              GestureDetector(
-                onTap: () => _onLoginTap(context),
-                child: Text(
-                  'Log in',
-                  style: TextStyle(
-                      color: Theme.of(context).primaryColor,
-                      fontWeight: FontWeight.w600),
-                ),
+          bottomNavigationBar: BottomAppBar(
+            elevation: 2,
+            color: Colors.grey.shade100,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: Sizes.size32,
               ),
-            ],
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text('Already have an account?'),
+                  Gaps.h5,
+                  GestureDetector(
+                    onTap: () => _onLoginTap(context),
+                    child: Text(
+                      'Log in',
+                      style: TextStyle(
+                          color: Theme.of(context).primaryColor,
+                          fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

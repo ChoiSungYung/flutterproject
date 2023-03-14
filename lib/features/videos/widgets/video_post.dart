@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
@@ -26,6 +27,8 @@ class _VideoPostState extends State<VideoPost>
   VideoPlayerController _videoPlayerController =
       VideoPlayerController.asset("assets/videos/love.mp4");
   bool _isPaused = false;
+  bool _isMuted = false;
+
   final Duration _animationDuration = const Duration(milliseconds: 200);
 
   late final AnimationController _animationController;
@@ -43,6 +46,10 @@ class _VideoPostState extends State<VideoPost>
         VideoPlayerController.asset("assets/videos/love.mp4");
     await _videoPlayerController.initialize();
     await _videoPlayerController.setLooping(true);
+    if (kIsWeb) {
+      await _videoPlayerController.setVolume(0);
+      _isMuted = true;
+    }
     _videoPlayerController.addListener(_onVideoChange);
     setState(() {});
   }
@@ -67,6 +74,7 @@ class _VideoPostState extends State<VideoPost>
   }
 
   void _onVisibilityChanged(VisibilityInfo info) {
+    if (!mounted) return;
     if (info.visibleFraction == 1 &&
         !_isPaused &&
         !_videoPlayerController.value.isPlaying) {
@@ -88,6 +96,20 @@ class _VideoPostState extends State<VideoPost>
     setState(() {
       _isPaused = !_isPaused;
     });
+  }
+
+  void _onVolumeToggle() {
+    if (kIsWeb && !_isMuted) {
+      _videoPlayerController.setVolume(0);
+      setState(() {
+        _isMuted = !_isMuted;
+      });
+    } else if (kIsWeb && _isMuted) {
+      _videoPlayerController.setVolume(10);
+      setState(() {
+        _isMuted = !_isMuted;
+      });
+    }
   }
 
   void _onCommentsTap(BuildContext context) async {
@@ -203,6 +225,20 @@ class _VideoPostState extends State<VideoPost>
               ],
             ),
           ),
+          if (kIsWeb)
+            Positioned(
+              top: 10,
+              left: 10,
+              child: GestureDetector(
+                onTap: () => _onVolumeToggle(),
+                child: VideoButton(
+                  icon: _isMuted
+                      ? FontAwesomeIcons.volumeXmark
+                      : FontAwesomeIcons.volumeHigh,
+                  text: _isMuted ? "mute" : "on",
+                ),
+              ),
+            ),
         ],
       ),
     );

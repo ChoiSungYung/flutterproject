@@ -1,8 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
-import 'package:tiktok_clone/features/inbox/chat_detail_screen.dart';
+import 'package:tiktok_clone/features/main_navigation/main_navigation_screen.dart';
 
-void main() => runApp(const TikTokApp()); // initiate MyApp as  StatelessWidget
+//화면 고정 설정
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations(
+    [
+      DeviceOrientation.portraitUp,
+    ],
+  );
+  //폰 상단 기능 색상 변경
+  SystemChrome.setSystemUIOverlayStyle(
+    SystemUiOverlayStyle.dark,
+  );
+  runApp(const TikTokApp());
+} // initiate MyApp as  StatelessWidget
 
 class TikTokApp extends StatelessWidget {
   const TikTokApp({super.key});
@@ -11,6 +25,7 @@ class TikTokApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'TikTok Clone',
       theme: ThemeData(
         // This is the theme of your application.
@@ -41,8 +56,8 @@ class TikTokApp extends StatelessWidget {
         //highlightColor: Colors.transparent,
       ),
       // home: const SignUpScreen(),
-      //home: const MainNavigationScreen(),
-      home: const ChatDetailScreen(),
+      home: const MainNavigationScreen(),
+      //home: const SignUpScreen(),
     );
   }
 }
