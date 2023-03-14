@@ -27,6 +27,7 @@ class TikTokApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'TikTok Clone',
+      themeMode: ThemeMode.dark,
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -37,6 +38,14 @@ class TikTokApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
+        brightness: Brightness.light,
+        textTheme: const TextTheme(
+          headlineLarge: TextStyle(
+            fontSize: Sizes.size24,
+            fontWeight: FontWeight.w700,
+            color: Colors.black,
+          ),
+        ),
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.white,
           foregroundColor: Colors.black,
@@ -47,6 +56,11 @@ class TikTokApp extends StatelessWidget {
             fontWeight: FontWeight.w600,
           ),
         ),
+        tabBarTheme: TabBarTheme(
+          labelColor: Colors.black,
+          unselectedLabelColor: Colors.grey.shade500,
+          indicatorColor: Colors.black,
+        ),
         scaffoldBackgroundColor: Colors.white,
         primaryColor: const Color(0xFFE9435A),
         textSelectionTheme: const TextSelectionThemeData(
@@ -54,10 +68,62 @@ class TikTokApp extends StatelessWidget {
         ),
         splashColor: Colors.transparent,
         //highlightColor: Colors.transparent,
+        listTileTheme: const ListTileThemeData(
+          iconColor: Colors.black,
+        ),
       ),
+      darkTheme: ThemeData(
+        tabBarTheme: const TabBarTheme(
+          indicatorColor: Colors.white,
+        ),
+        textSelectionTheme: const TextSelectionThemeData(
+          cursorColor: Color(0xFFE9435A),
+        ),
+        textTheme: Typography.whiteMountainView,
+        brightness: Brightness.dark,
+        scaffoldBackgroundColor: Colors.black,
+        primaryColor: const Color(0xFFE9435A),
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.grey.shade900,
+        ),
+        bottomAppBarTheme: BottomAppBarTheme(
+          color: Colors.grey.shade900,
+        ),
+      ),
+
       // home: const SignUpScreen(),
       home: const MainNavigationScreen(),
       //home: const SignUpScreen(),
+    );
+  }
+}
+
+class LayoutBuilderCodeLab extends StatelessWidget {
+  const LayoutBuilderCodeLab({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    return Scaffold(
+      body: SizedBox(
+        width: size.width / 2,
+        child: LayoutBuilder(
+          builder: (context, constraints) => Container(
+            width: constraints.maxWidth,
+            height: constraints.maxHeight,
+            color: Colors.teal,
+            child: Center(
+              child: Text(
+                "${size.width} / ${constraints.maxWidth}",
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 98,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

@@ -33,13 +33,10 @@ class LoginScreen extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: Sizes.size40),
           child: Column(
             children: [
-              const Text(
-                '틱톡에 로그인하기',
-                style: TextStyle(
-                  fontFamily: 'GmarketSans',
-                  fontSize: Sizes.size24,
-                  fontWeight: FontWeight.w700,
-                ),
+              Gaps.v80,
+              Text(
+                'Log in to TikTok',
+                style: Theme.of(context).textTheme.headlineLarge,
               ),
               Gaps.v20,
               const Text(
@@ -83,7 +80,6 @@ class LoginScreen extends StatelessWidget {
       ),
       bottomNavigationBar: BottomAppBar(
         elevation: 2,
-        color: Colors.grey.shade100,
         child: Padding(
           padding: const EdgeInsets.symmetric(
             vertical: Sizes.size32,

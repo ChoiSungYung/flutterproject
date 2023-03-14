@@ -6,6 +6,7 @@ import 'package:tiktok_clone/features/authentication/apple_screen.dart';
 import 'package:tiktok_clone/features/authentication/username_screen.dart';
 import 'package:tiktok_clone/features/authentication/login_screen.dart';
 import 'package:tiktok_clone/features/authentication/widgets/auth_buttons.dart';
+import 'package:tiktok_clone/utils.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -45,19 +46,19 @@ class SignUpScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: Sizes.size40),
               child: Column(
                 children: [
-                  const Text(
+                  Gaps.v80,
+                  Text(
                     'Sign up for TikTok',
-                    style: TextStyle(
-                      fontSize: Sizes.size24,
-                      fontWeight: FontWeight.w700,
-                    ),
+                    style: Theme.of(context).textTheme.headlineLarge,
                   ),
                   Gaps.v20,
-                  const Text(
+                  Text(
                     'Create a profile, follow other accounts, make your own videos, and more.',
                     style: TextStyle(
                       fontSize: Sizes.size16,
-                      color: Colors.black38,
+                      color: isDarkMode(context)
+                          ? Colors.grey.shade300
+                          : Colors.black45,
                     ),
                     textAlign: TextAlign.center,
                   ),
@@ -65,7 +66,8 @@ class SignUpScreen extends StatelessWidget {
                   if (orientation == Orientation.portrait) ...[
                     AuthButton(
                       icon: const FaIcon(FontAwesomeIcons.solidUser),
-                      text: 'Use Email & password',
+                      text:
+                          '${MediaQuery.of(context).platformBrightness}Use Email & password',
                       tap: _onEmailTap,
                     ),
                     Gaps.v10,
@@ -113,7 +115,6 @@ class SignUpScreen extends StatelessWidget {
           ),
           bottomNavigationBar: BottomAppBar(
             elevation: 2,
-            color: Colors.grey.shade100,
             child: Padding(
               padding: const EdgeInsets.symmetric(
                 vertical: Sizes.size32,
@@ -121,7 +122,10 @@ class SignUpScreen extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text('Already have an account?'),
+                  const Text(
+                    'Already have an account?',
+                    style: TextStyle(),
+                  ),
                   Gaps.h5,
                   GestureDetector(
                     onTap: () => _onLoginTap(context),

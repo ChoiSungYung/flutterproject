@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:tiktok_clone/constants/gaps.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
 import 'package:tiktok_clone/features/main_navigation/main_navigation_screen.dart';
+import 'package:tiktok_clone/utils.dart';
 
 enum Direction { right, left }
 
@@ -79,7 +80,8 @@ class _TutorialScreenState extends State<TutorialScreen> {
                   Text(
                     "Videos are personalized for you based on what you watch, like, and share.",
                     style: TextStyle(
-                        fontSize: Sizes.size20, color: Colors.black54),
+                      fontSize: Sizes.size20,
+                    ),
                   ),
                 ],
               ),
@@ -112,6 +114,7 @@ class _TutorialScreenState extends State<TutorialScreen> {
           ),
         ),
         bottomNavigationBar: BottomAppBar(
+          color: isDarkMode(context) ? Colors.black : Colors.white,
           child: Padding(
             padding: const EdgeInsets.symmetric(
                 horizontal: Sizes.size24, vertical: Sizes.size24),
