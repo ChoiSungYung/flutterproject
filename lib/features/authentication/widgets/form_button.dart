@@ -31,6 +31,7 @@ class FormButton extends StatelessWidget {
           style: TextStyle(
             fontWeight: FontWeight.w600,
             fontSize: Sizes.size16,
+            fontFamily: Theme.of(context).textTheme.bodyMedium?.fontFamily,
             color: disabled ? Colors.grey.shade400 : Colors.white,
           ),
           child: Text(

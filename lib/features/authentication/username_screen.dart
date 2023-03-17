@@ -44,7 +44,10 @@ class _UsernameScreenState extends State<UsernameScreen> {
     return Scaffold(
         appBar: AppBar(
           title: const Text(
-            'Sign up',
+            '회원가입',
+            style: TextStyle(
+              fontFamily: 'NanumGothic',
+            ),
           ),
         ),
         body: Padding(
@@ -54,7 +57,7 @@ class _UsernameScreenState extends State<UsernameScreen> {
             children: [
               Gaps.v14,
               const Text(
-                'Create username',
+                '유저명을 생성하세요.',
                 style: TextStyle(
                   fontSize: Sizes.size24,
                   fontWeight: FontWeight.w600,
@@ -62,7 +65,7 @@ class _UsernameScreenState extends State<UsernameScreen> {
               ),
               Gaps.v8,
               const Text(
-                'You can always change this later.',
+                '유저명은 언제든지 변경할 수 있습니다.',
                 style: TextStyle(
                   fontSize: Sizes.size16,
                   color: Colors.black54,
@@ -72,7 +75,7 @@ class _UsernameScreenState extends State<UsernameScreen> {
               TextField(
                 controller: _usernamecontroller,
                 decoration: InputDecoration(
-                  hintText: "Username",
+                  hintText: "유저명",
                   enabledBorder: UnderlineInputBorder(
                     borderSide: BorderSide(
                       color: Colors.grey.shade400,
@@ -91,7 +94,7 @@ class _UsernameScreenState extends State<UsernameScreen> {
                   onTap: _onNextTap,
                   child: FormButton(
                     disabled: _username.isEmpty,
-                    text: 'next',
+                    text: '다음',
                   ))
             ],
           ),

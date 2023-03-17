@@ -32,7 +32,9 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Log in'),
+        title: const Text(
+          '로그인',
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(
@@ -47,7 +49,7 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
                   Gaps.v28,
                   TextFormField(
                     decoration: const InputDecoration(
-                      hintText: 'Email',
+                      hintText: '이메일을 입력해주세요.',
                     ),
                     validator: (value) {
                       // return "i dont like your email";
@@ -62,7 +64,7 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
                   Gaps.v16,
                   TextFormField(
                     decoration: const InputDecoration(
-                      hintText: 'Password',
+                      hintText: '비밀번호를 입력하세요.',
                     ),
                     validator: (value) {
                       return null;
@@ -74,7 +76,7 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
                     },
                   ),
                   Gaps.v28,
-                  const FormButton(disabled: false, text: 'Login'),
+                  const FormButton(disabled: false, text: '로그인'),
                 ],
               )),
         ),

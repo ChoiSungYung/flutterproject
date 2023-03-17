@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:tiktok_clone/constants/gaps.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
 import 'package:tiktok_clone/features/main_navigation/main_navigation_screen.dart';
-import 'package:tiktok_clone/utils.dart';
 
 enum Direction { right, left }
 
@@ -100,7 +99,8 @@ class _TutorialScreenState extends State<TutorialScreen> {
                   Text(
                     "Take care of one another!",
                     style: TextStyle(
-                        fontSize: Sizes.size20, color: Colors.black54),
+                      fontSize: Sizes.size20,
+                    ),
                   ),
                 ],
               ),
@@ -113,18 +113,23 @@ class _TutorialScreenState extends State<TutorialScreen> {
             ),
           ),
         ),
-        bottomNavigationBar: BottomAppBar(
-          color: isDarkMode(context) ? Colors.black : Colors.white,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-                horizontal: Sizes.size24, vertical: Sizes.size24),
-            child: AnimatedOpacity(
-              duration: const Duration(milliseconds: 300),
-              opacity: _showingPage == Page.first ? 0 : 1,
-              child: CupertinoButton(
-                  color: Theme.of(context).primaryColor,
-                  onPressed: _onEnterAppTap,
-                  child: const Text('Next')),
+        bottomNavigationBar: Padding(
+          padding: const EdgeInsets.only(
+            top: Sizes.size24,
+            bottom: Sizes.size24,
+            left: Sizes.size24,
+            right: Sizes.size24,
+          ),
+          child: AnimatedOpacity(
+            duration: const Duration(milliseconds: 300),
+            opacity: _showingPage == Page.first ? 0 : 1,
+            child: CupertinoButton(
+              color: Theme.of(context).primaryColor,
+              onPressed: _onEnterAppTap,
+              child: Text(
+                '다음',
+                style: Theme.of(context).textTheme.bodyMedium,
+              ),
             ),
           ),
         ),

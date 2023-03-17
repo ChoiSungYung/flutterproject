@@ -44,6 +44,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
+    final isDark = isDarkMode(context);
     print(width);
     return DefaultTabController(
       length: tabs.length,
@@ -66,7 +67,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                     onChanged: _onSearchChanged,
                     onSubmitted: _onSearchSubmitted,
                     style: TextStyle(
-                      color: isDarkMode(context) ? Colors.white : Colors.black,
+                      color: isDark ? Colors.white : Colors.black,
                     ),
                   ),
                 ),
@@ -137,12 +138,13 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                       style: TextStyle(
                         fontSize: Sizes.size16 + Sizes.size2,
                         fontWeight: FontWeight.bold,
+                        height: 1.1,
                       ),
                     ),
                     Gaps.v8,
                     DefaultTextStyle(
                       style: TextStyle(
-                        color: isDarkMode(context)
+                        color: isDark
                             ? Colors.grey.shade300
                             : Colors.grey.shade600,
                         fontWeight: FontWeight.w600,

@@ -7,44 +7,25 @@ import 'package:tiktok_clone/features/onboarding/widget/interest_button.dart';
 
 bool _showTitle = false;
 const interests = [
-  "Daily Life",
-  "Comedy",
-  "Entertainment",
-  "Animals",
-  "Food",
-  "Beauty & Style",
-  "Drama",
-  "Learning",
-  "Talent",
-  "Sports",
-  "Auto",
-  "Family",
-  "Fitness & Health",
-  "DIY & Life Hacks",
-  "Arts & Crafts",
-  "Dance",
-  "Outdoors",
-  "Oddly Satisfying",
-  "Home & Garden",
-  "Daily Life",
-  "Comedy",
-  "Entertainment",
-  "Animals",
-  "Food",
-  "Beauty & Style",
-  "Drama",
-  "Learning",
-  "Talent",
-  "Sports",
-  "Auto",
-  "Family",
-  "Fitness & Health",
-  "DIY & Life Hacks",
-  "Arts & Crafts",
-  "Dance",
-  "Outdoors",
-  "Oddly Satisfying",
-  "Home & Garden",
+  "일상",
+  "코미디",
+  "연예",
+  "동물",
+  "음식",
+  "뷰티 & 스타일",
+  "드라마",
+  "학습",
+  "재능",
+  "스포츠",
+  "자동차",
+  "가족",
+  "건강 & 피트니스",
+  "DIY & 라이프 해킹",
+  "미술 & 공예",
+  "댄스",
+  "야외활동",
+  "기분 좋은",
+  "가정 & 정원"
 ];
 
 class InterestsScreen extends StatefulWidget {
@@ -100,7 +81,7 @@ class _InterestsScreenState extends State<InterestsScreen> {
             duration: const Duration(
               milliseconds: 300,
             ),
-            child: const Text('Choose your interests')),
+            child: const Text('관심사를 선택해주세요')),
       ),
       body: Scrollbar(
         controller: _scrollController,
@@ -118,7 +99,7 @@ class _InterestsScreenState extends State<InterestsScreen> {
               children: [
                 Gaps.v32,
                 const Text(
-                  "Choose your interests",
+                  "관심사를 선택해주세요",
                   style: TextStyle(
                     fontSize: Sizes.size40,
                     fontWeight: FontWeight.bold,
@@ -126,7 +107,7 @@ class _InterestsScreenState extends State<InterestsScreen> {
                 ),
                 Gaps.v20,
                 const Text(
-                  "Get better video recommendations",
+                  "내 취향에 더욱 맞는 영상을 추천받으세요.",
                   style: TextStyle(
                     fontSize: Sizes.size20,
                   ),
@@ -145,20 +126,20 @@ class _InterestsScreenState extends State<InterestsScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-        elevation: 2,
-        child: Padding(
-          padding: const EdgeInsets.only(
-            bottom: Sizes.size40,
-            top: Sizes.size16,
-            left: Sizes.size24,
-            right: Sizes.size24,
-          ),
-          child: CupertinoButton(
-            borderRadius: BorderRadius.zero,
-            color: Theme.of(context).primaryColor,
-            onPressed: _onNextTap,
-            child: const Text('Next'),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.only(
+          bottom: Sizes.size40,
+          top: Sizes.size16,
+          left: Sizes.size24,
+          right: Sizes.size24,
+        ),
+        child: CupertinoButton(
+          borderRadius: BorderRadius.zero,
+          color: Theme.of(context).primaryColor,
+          onPressed: _onNextTap,
+          child: Text(
+            '다음',
+            style: Theme.of(context).textTheme.bodyMedium,
           ),
         ),
       ),

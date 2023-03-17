@@ -5,6 +5,12 @@ import 'package:tiktok_clone/features/main_navigation/main_navigation_screen.dar
 
 //화면 고정 설정
 void main() async {
+  //폰트 로딩을 위한 FontLoader 객체 생성
+  final FontLoader fontLoader = FontLoader('NanumGothic');
+
+  //폰트를 로딩하고, 로딩이 완료되면 runApp 함수를 실행
+  fontLoader.load().then((_) => runApp(const TikTokApp()));
+
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations(
     [
@@ -25,10 +31,13 @@ class TikTokApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      locale: const Locale('ko', 'KR'),
       debugShowCheckedModeBanner: false,
       title: 'TikTok Clone',
       themeMode: ThemeMode.dark,
       theme: ThemeData(
+        useMaterial3: true,
+        fontFamily: 'NanumGothic',
         // This is the theme of your application.
         //
         // Try running your application with "flutter run". You'll see the
@@ -39,21 +48,26 @@ class TikTokApp extends StatelessWidget {
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
         brightness: Brightness.light,
+
         textTheme: const TextTheme(
+          bodyMedium: TextStyle(
+            fontFamily: 'NanumGothic',
+          ),
           headlineLarge: TextStyle(
             fontSize: Sizes.size24,
             fontWeight: FontWeight.w700,
-            color: Colors.black,
           ),
         ),
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.white,
           foregroundColor: Colors.black,
+          surfaceTintColor: Colors.white,
           elevation: 0,
           titleTextStyle: TextStyle(
             color: Colors.black,
             fontSize: Sizes.size16 + Sizes.size2,
             fontWeight: FontWeight.w600,
+            fontFamily: 'NanumGothic',
           ),
         ),
         tabBarTheme: TabBarTheme(
@@ -73,18 +87,44 @@ class TikTokApp extends StatelessWidget {
         ),
       ),
       darkTheme: ThemeData(
-        tabBarTheme: const TabBarTheme(
+        useMaterial3: true,
+        fontFamily: 'NanumGothic',
+        tabBarTheme: TabBarTheme(
           indicatorColor: Colors.white,
+          labelColor: Colors.white,
+          unselectedLabelColor: Colors.grey.shade700,
         ),
         textSelectionTheme: const TextSelectionThemeData(
           cursorColor: Color(0xFFE9435A),
         ),
-        textTheme: Typography.whiteMountainView,
         brightness: Brightness.dark,
+        textTheme: const TextTheme(
+          bodyMedium: TextStyle(
+            color: Colors.white,
+            fontFamily: 'NanumGothic',
+          ),
+          headlineLarge: TextStyle(
+            fontSize: Sizes.size24,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
         scaffoldBackgroundColor: Colors.black,
         primaryColor: const Color(0xFFE9435A),
         appBarTheme: AppBarTheme(
+          surfaceTintColor: Colors.grey.shade900,
           backgroundColor: Colors.grey.shade900,
+          titleTextStyle: const TextStyle(
+            color: Colors.white,
+            fontSize: Sizes.size16 + Sizes.size2,
+            fontWeight: FontWeight.w600,
+            fontFamily: 'NanumGothic',
+          ),
+          actionsIconTheme: IconThemeData(
+            color: Colors.grey.shade100,
+          ),
+          iconTheme: IconThemeData(
+            color: Colors.grey.shade100,
+          ),
         ),
         bottomAppBarTheme: BottomAppBarTheme(
           color: Colors.grey.shade900,

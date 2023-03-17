@@ -48,12 +48,12 @@ class SignUpScreen extends StatelessWidget {
                 children: [
                   Gaps.v80,
                   Text(
-                    'Sign up for TikTok',
+                    '틱톡 회원가입',
                     style: Theme.of(context).textTheme.headlineLarge,
                   ),
                   Gaps.v20,
                   Text(
-                    'Create a profile, follow other accounts, make your own videos, and more.',
+                    '계정을 관리하고, 알림을 확인하고, 영상에 댓글을 남기세요!',
                     style: TextStyle(
                       fontSize: Sizes.size16,
                       color: isDarkMode(context)
@@ -66,26 +66,25 @@ class SignUpScreen extends StatelessWidget {
                   if (orientation == Orientation.portrait) ...[
                     AuthButton(
                       icon: const FaIcon(FontAwesomeIcons.solidUser),
-                      text:
-                          '${MediaQuery.of(context).platformBrightness}Use Email & password',
+                      text: '이메일과 비밀번호로 회원가입',
                       tap: _onEmailTap,
                     ),
                     Gaps.v10,
                     AuthButton(
                       icon: const FaIcon(FontAwesomeIcons.facebook),
-                      text: 'Continue with facebook',
+                      text: '페이스북 계정으로 회원가입',
                       tap: _onAppleTap,
                     ),
                     Gaps.v10,
                     AuthButton(
                       icon: const FaIcon(FontAwesomeIcons.apple),
-                      text: 'Continue with Apple',
+                      text: '애플 계정으로 회원가입',
                       tap: _onAppleTap,
                     ),
                     Gaps.v10,
                     AuthButton(
                       icon: const FaIcon(FontAwesomeIcons.google),
-                      text: 'Continue with Google',
+                      text: '구글 계정으로 회원가입',
                       tap: _onAppleTap,
                     ),
                   ],
@@ -95,7 +94,7 @@ class SignUpScreen extends StatelessWidget {
                         Expanded(
                           child: AuthButton(
                             icon: const FaIcon(FontAwesomeIcons.solidUser),
-                            text: 'Use Email & password',
+                            text: '이메일 & 패스워드로 로그인하기',
                             tap: _onEmailTap,
                           ),
                         ),
@@ -103,7 +102,7 @@ class SignUpScreen extends StatelessWidget {
                         Expanded(
                           child: AuthButton(
                             icon: const FaIcon(FontAwesomeIcons.facebook),
-                            text: 'Continue with facebook',
+                            text: '페이스북 아이디로 회원가입',
                             tap: _onAppleTap,
                           ),
                         ),
@@ -113,24 +112,24 @@ class SignUpScreen extends StatelessWidget {
               ),
             ),
           ),
-          bottomNavigationBar: BottomAppBar(
-            elevation: 2,
+          bottomNavigationBar: Container(
             child: Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: Sizes.size32,
+              padding: const EdgeInsets.only(
+                top: Sizes.size32,
+                bottom: Sizes.size64,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text(
-                    'Already have an account?',
+                    '이미 계정이 있나요?',
                     style: TextStyle(),
                   ),
                   Gaps.h5,
                   GestureDetector(
                     onTap: () => _onLoginTap(context),
                     child: Text(
-                      'Log in',
+                      '로그인',
                       style: TextStyle(
                           color: Theme.of(context).primaryColor,
                           fontWeight: FontWeight.w600),

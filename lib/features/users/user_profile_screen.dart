@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tiktok_clone/constants/breakpoint.dart';
 import 'package:tiktok_clone/constants/gaps.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
 import 'package:tiktok_clone/features/settings/settings_screen.dart';
@@ -22,6 +23,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
     return SafeArea(
       child: DefaultTabController(
         length: 2,
@@ -45,6 +47,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
               SliverToBoxAdapter(
                 child: Column(
                   children: [
+                    Gaps.v20,
                     const CircleAvatar(
                       radius: 50,
                       foregroundImage: NetworkImage(
@@ -72,7 +75,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                     ),
                     Gaps.v24,
                     SizedBox(
-                      height: Sizes.size48,
+                      height: Sizes.size56,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -105,15 +108,16 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                         ],
                       ),
                     ),
-                    Gaps.v14,
+                    Gaps.v10,
                     FractionallySizedBox(
-                      widthFactor: 0.70,
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Container(
                             padding: const EdgeInsets.symmetric(
                               horizontal: Sizes.size80,
-                              vertical: Sizes.size14,
+                              vertical: Sizes.size18,
                             ),
                             decoration: BoxDecoration(
                               color: Theme.of(context).primaryColor,
@@ -143,7 +147,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                                 color: Colors.grey.shade200,
                               ),
                             ),
-                            child: const FaIcon(
+                            child: const Icon(
                               FontAwesomeIcons.youtube,
                               color: Colors.black87,
                             ),
@@ -161,7 +165,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                                 color: Colors.grey.shade200,
                               ),
                             ),
-                            child: const FaIcon(
+                            child: const Icon(
                               FontAwesomeIcons.caretDown,
                               color: Colors.black87,
                             ),
@@ -207,8 +211,8 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                       ScrollViewKeyboardDismissBehavior.onDrag,
                   itemCount: 20,
                   padding: EdgeInsets.zero,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: width > Breakpoints.lg ? 5 : 2,
                     crossAxisSpacing: Sizes.size2,
                     mainAxisSpacing: Sizes.size2,
                     childAspectRatio: 9 / 14,
